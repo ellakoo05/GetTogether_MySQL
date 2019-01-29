@@ -29,7 +29,7 @@ $res2 = mysqli_query($conn,$sql);
 //echo "Insert failed"; 
 //};
 //
-header("Location:http://localhost:8080/eventpage");
-exit;
+//header("Location:http://localhost:8080/eventpage");
+//exit;
 
 ?>
