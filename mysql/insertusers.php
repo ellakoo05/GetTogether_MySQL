@@ -1,5 +1,7 @@
 <?php
-session_start(); 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 
 $hostname = "tk3mehkfmmrhjg0b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"; 
 $username = "sbib1pmzgwmexs5g"; 
