@@ -19,10 +19,6 @@ else {
   echo "Users";
   
   $res2 = mysqli_query($conn,"SELECT * FROM users");
-  
-  if (mysqli_num_rows($res2) > 0) {
-    while($row = mysqli_fetch_assoc($res2)) {
-      echo "<a href='update_actor_form.php?id={$row['username']}'>Update</a> ";
     }
   }
 }
