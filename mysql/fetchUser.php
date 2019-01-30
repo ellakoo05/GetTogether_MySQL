@@ -16,17 +16,18 @@ if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
 else {
-$sql = "SELECT * FROM users";
+  echo "Users";
+  
+  $res2 = mysqli_query($conn,"SELECT * FROM users");
+  
+  if (mysqli_num_rows($res2) > 0) {
+    while($row = mysqli_fetch_assoc($res2)) {
+      echo "<a href='update_actor_form.php?id={$row['username']}'>Update</a> ";
+    }
+  }
 }
 
-$res2 = mysqli_query($conn,$sql);
-
-if($res2 === TRUE){
-echo $res2; 
-}
-else{
-echo "Insert failed"; 
-};
+mysqli_close($conn);
 
 //header("Location:http://localhost:8080/mainpage");
 //exit;
