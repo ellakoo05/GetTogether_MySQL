@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+<html lang="en">
+    <head>  
+  
+    </head>
+    <body>
+        
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
@@ -21,9 +23,9 @@ if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
 else {
-  echo "Users";
+  echo "Events";
   
-  $res2 = mysqli_query($conn,"SELECT * FROM users");
+  $res2 = mysqli_query($conn,"SELECT * FROM events");
   
   if (mysqli_num_rows($res2) > 0) {
         //echo "we have some results";
@@ -31,13 +33,11 @@ else {
         //we will generate some dymaic sql
         while($row = mysqli_fetch_assoc($res2)) {
             
-            $usrname = {$row['username']};
+            $usrname = {$row['eventname']};
             
-            $email = {$row['email']};
+            $email = {$row['eventlocation']};
             
-            $pwd ={$row['password']};
-            
-    }
+    }}}
 
 mysqli_close($conn);
 
@@ -45,5 +45,7 @@ mysqli_close($conn);
 //exit;
 
 ?>
+<br>
+<a href="admin.php">Back to Admin</a>
 </body>
 </html>
