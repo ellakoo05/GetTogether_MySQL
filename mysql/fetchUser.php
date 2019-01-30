@@ -20,7 +20,7 @@ $sql = "SELECT * FROM users";
 }
 
 $res2 = mysqli_query($conn,$sql);
-
+echo $res2;
 //if($res2 === TRUE){
 //echo "New record created successfully"; 
 //}
