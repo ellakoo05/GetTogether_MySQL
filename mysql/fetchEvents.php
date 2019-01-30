@@ -32,10 +32,9 @@ else {
         
         //we will generate some dymaic sql
         while($row = mysqli_fetch_assoc($res2)) {
-          
-          echo "{$row['eventname']}";
-          echo "{$row['eventdate']}";
-          echo "{$row['eventlocation']}";
+//          
+//          echo "{$row['eventname']}";
+//          echo "{$row['eventlocation']}";
             
     }}}
 
