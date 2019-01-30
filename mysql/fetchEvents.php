@@ -23,7 +23,7 @@ if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
 else {
-  echo "Events";
+  echo "<h1>Events</h1>";
   
   $res2 = mysqli_query($conn,"SELECT * FROM events");
   
@@ -32,10 +32,10 @@ else {
         
         //we will generate some dymaic sql
         while($row = mysqli_fetch_assoc($res2)) {
-            
-            $usrname = {$row['eventname']};
-            
-            $email = {$row['eventlocation']};
+          
+          echo "{$row['eventname']}";
+          echo "{$row['eventdate']}";
+          echo "{$row['eventlocation']}";
             
     }}}
 
@@ -46,6 +46,5 @@ mysqli_close($conn);
 
 ?>
 <br>
-<a href="admin.php">Back to Admin</a>
 </body>
 </html>
