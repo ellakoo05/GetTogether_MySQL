@@ -20,8 +20,6 @@ else {
   
   $res2 = mysqli_query($conn,"SELECT * FROM users");
     }
-  }
-}
 
 mysqli_close($conn);
 
