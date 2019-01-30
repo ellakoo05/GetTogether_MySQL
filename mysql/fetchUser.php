@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+  
+    </head>
+    <body>
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
@@ -19,7 +25,20 @@ else {
   echo "Users";
   
   $res2 = mysqli_query($conn,"SELECT * FROM users");
-    }
+  
+  if (mysqli_num_rows($res2) > 0) {
+        //echo "we have some results";
+        
+        //we will generate some dymaic sql
+        while($row = mysqli_fetch_assoc($res2)) {
+            
+            echo "{$row['username']} ";
+            
+            echo "{$row['email']} ";
+            
+            echo "{$row['password']} ";
+            
+    }}}
 
 mysqli_close($conn);
 
@@ -27,3 +46,6 @@ mysqli_close($conn);
 //exit;
 
 ?>
+<br>
+</body>
+</html>
