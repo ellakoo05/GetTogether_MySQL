@@ -20,14 +20,14 @@ $sql = "SELECT * FROM users";
 }
 
 $res2 = mysqli_query($conn,$sql);
-echo $res2;
-//if($res2 === TRUE){
-//echo "New record created successfully"; 
-//}
-//else{
-//echo "Insert failed"; 
-//};
-//
+
+if($res2 === TRUE){
+echo $res2; 
+}
+else{
+echo "Insert failed"; 
+};
+
 //header("Location:http://localhost:8080/mainpage");
 //exit;
 
