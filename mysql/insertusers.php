@@ -27,8 +27,8 @@ $res2 = mysqli_query($conn,$sql);
 //else{
 //echo "Insert failed"; 
 //};
-//
-//header("Location:http://localhost:8080/mainpage");
-//exit;
+
+header("Location:http://localhost:8080/mainpage");
+exit;
 
 ?>
