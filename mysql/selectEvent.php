@@ -16,19 +16,15 @@ $eventlocation = $_POST['eventlocation'];
 $eventtime     = $_POST['eventtime'];
 
 //$query = "SELECT * FROM users";
+$query = "SELECT * FROM events";
 
-
-$result = mysqli_query("SELECT * FROM events");
-$rows = array();
-   while($r = mysql_fetch_assoc($result)) {
-     $rows[] = $r;
-   }
-
- print json_encode($rows);
-//if ($result) {
-//    $events = $result->fetchAll();
-//    echo json_encode($events);
-//} else {
-//    echo json_encode(false);
-//}
+$result = $conn->query($query);
+if ($result) {
+    $events = array();
+      while($r = mysqli_fetch_array($result)) {
+    $events[] = $r;
+  } echo json_encode($events); 
+} else {
+    echo json_encode(false);
+}
 ?>
