@@ -16,12 +16,12 @@ $eventlocation = $_POST['eventlocation'];
 $eventtime     = $_POST['eventtime'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM events WHERE eventname='$eventname', eventdate='$eventdate', eventlocation='$eventlocation', AND eventtime='$eventtime'";
+$query = "SELECT * FROM events";
 
 $result = $conn->query($query);
 if ($result) {
     $events = $result->fetchAll();
-    echo json_encode(true);
+    echo json_encode($events);
 } else {
     echo json_encode(false);
 }
