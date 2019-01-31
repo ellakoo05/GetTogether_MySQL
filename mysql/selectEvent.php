@@ -19,10 +19,16 @@ $eventtime     = $_POST['eventtime'];
 $query = "SELECT * FROM events";
 
 $result = $conn->query($query);
-if ($result) {
-    $events = $result->fetchAll();
-    echo json_encode($events);
-} else {
-    echo json_encode(false);
-}
+$rows = array();
+   while($r = mysql_fetch_assoc($result)) {
+     $rows[] = $r;
+   }
+
+ print json_encode($rows);
+//if ($result) {
+//    $events = $result->fetchAll();
+//    echo json_encode($events);
+//} else {
+//    echo json_encode(false);
+//}
 ?>
