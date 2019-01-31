@@ -10,8 +10,8 @@ catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-$username     = $_POST['username'];
-$email     = $_POST['email'];
+$username = $_POST['username'];
+$email    = $_POST['email'];
 $password = $_POST['password'];
 
 //$query = "SELECT * FROM users";
