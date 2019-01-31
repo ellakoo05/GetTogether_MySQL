@@ -3,8 +3,8 @@
 //header("Access-Control-Allow-Methods: GET, POST");
 //header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 
-if($_SERVER['HTTP_ORIGIN'] == "https://gettogetherbcit.herokuapp.com/mysql/selectEvent.php") {
-    header('Access-Control-Allow-Origin: https://gettogetherbcit.herokuapp.com/mysql/selectEvent.php');
+if($_SERVER['HTTP_ORIGIN'] == "http://gettogetherbcit.herokuapp.com/mysql/selectEvent.php") {
+    header('Access-Control-Allow-Origin: http://gettogetherbcit.herokuapp.com/mysql/selectEvent.php');
     header("Access-Control-Allow-Methods: GET, POST");
 header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 } else {    
