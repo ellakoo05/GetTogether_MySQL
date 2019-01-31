@@ -16,9 +16,9 @@ $eventlocation = $_POST['eventlocation'];
 $eventtime     = $_POST['eventtime'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM events";
 
-$result = $conn->query($query);
+
+$result = mysqli_query("SELECT * FROM events");
 $rows = array();
    while($r = mysql_fetch_assoc($result)) {
      $rows[] = $r;
