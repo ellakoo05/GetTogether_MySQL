@@ -20,10 +20,8 @@ $query = "SELECT * FROM events";
 
 $result = $conn->query($query);
 if ($result) {
-    $events = array();
-      while($r = mysqli_fetch_array($result)) {
-    $events[] = $r;
-  } echo json_encode($events); 
+    $events = $result->fetchAll();
+    echo json_encode($events);
 } else {
     echo json_encode(false);
 }

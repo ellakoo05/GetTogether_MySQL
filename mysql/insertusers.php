@@ -1,32 +1,29 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST");
 header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 
-$hostname = "tk3mehkfmmrhjg0b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"; 
-$username = "sbib1pmzgwmexs5g"; 
-$password = "tk4m14h6yyt889va";
-$dbname = "fvtmkfyz8ymzy8a1";
-$port = "3306";
-
-// Check connection
-$conn = mysqli_connect($hostname, $username, $password, $dbname, $port);
-// Check connection
-if (!$conn) {
-die("Connection failed: " . mysqli_connect_error());
+try {
+    $conn = new PDO("mysql:host=tk3mehkfmmrhjg0b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=fvtmkfyz8ymzy8a1", "sbib1pmzgwmexs5g", "tk4m14h6yyt889va");
 }
-else {
-$sql = "INSERT INTO users (username, password, email) VALUES ('{$_POST['username']}','{$_POST['password']}','{$_POST['email']}')";
+catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
 
-$res2 = mysqli_query($conn,$sql);
+$username     = $_POST['username'];
+$email     = $_POST['email'];
+$password = $_POST['password'];
 
-//if($res2 === TRUE){
-//echo "New record created successfully"; 
-//}
-//else{
-//echo "Insert failed"; 
-//};
+//$query = "SELECT * FROM users";
+$query = "INSERT INTO users (username, password, email) VALUES ('{$_POST['username']}','{$_POST['password']}','{$_POST['email']}')";
+
+$result = $conn->query($query);
+if ($result) {
+    $events = $result->fetchAll();
+    echo json_encode($events);
+} else {
+    echo json_encode(false);
+}
 
 header("Location:http://localhost:8080/mainpage");
 exit;
