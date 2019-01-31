@@ -15,7 +15,7 @@ $email     = $_POST['email'];
 $password = $_POST['password'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM users";
+$query = "SELECT username FROM users";
 
 $result = $conn->query($query);
 if ($result) {
