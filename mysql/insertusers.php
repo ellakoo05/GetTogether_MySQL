@@ -19,13 +19,9 @@ $query = "INSERT INTO users (username, password, email) VALUES ('{$_POST['userna
 
 $result = $conn->query($query);
 if ($result) {
-    $events = $result->fetchAll();
-    echo json_encode($events);
+    $users = $result->fetchAll();
+    echo json_encode($users);
 } else {
     echo json_encode(false);
 }
-
-header("Location:http://localhost:8080/mainpage");
-exit;
-
 ?>
