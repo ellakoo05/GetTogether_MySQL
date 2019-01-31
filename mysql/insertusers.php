@@ -16,7 +16,7 @@ if (!$conn) {
 die("Connection failed: " . mysqli_connect_error());
 }
 else {
-$sql = "INSERT INTO users (username, password, email) VALUES ('{$_POST["username"]}','{$_POST["password"]}','{$_POST["email"]}')";
+$sql = "INSERT INTO users (username, password, email) VALUES ('{$_POST['username']}','{$_POST['password']}','{$_POST['email']}')";
 }
 
 $res2 = mysqli_query($conn,$sql);
