@@ -18,6 +18,8 @@ $eventlocation = $_POST['eventlocation'];
 $eventtime     = $_POST['eventtime'];
 $eventID       = $data['id'];
 
+echo $eventID;
+
 //$query = "SELECT * FROM users";
 $query = "SELECT * FROM events WHERE id='" . $eventID . "';";
 
