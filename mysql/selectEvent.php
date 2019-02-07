@@ -15,7 +15,7 @@ $eventdate     = $_POST['eventdate'];
 $eventlocation = $_POST['eventlocation'];
 $eventtime     = $_POST['eventtime'];
 
-$query = "SELECT * FROM events";
+$query = "SELECT * FROM events WHERE id='35'";
 
 $result = $conn->query($query);
 if ($result) {
