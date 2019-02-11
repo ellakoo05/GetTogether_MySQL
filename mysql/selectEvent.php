@@ -14,8 +14,10 @@ $eventname     = $_POST['eventname'];
 $eventdate     = $_POST['eventdate'];
 $eventlocation = $_POST['eventlocation'];
 $eventtime     = $_POST['eventtime'];
+$eventID = $_POST['eventCode'];
 
 $query = "SELECT * FROM events WHERE id='35'";
+//$query = "SELECT * FROM events WHERE eventCode="VAR"'";
 
 $result = $conn->query($query);
 if ($result) {
