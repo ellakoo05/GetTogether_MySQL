@@ -14,16 +14,23 @@ $eventname     = $_POST['eventname'];
 $eventdate     = $_POST['eventdate'];
 $eventlocation = $_POST['eventlocation'];
 $eventtime     = $_POST['eventtime'];
-$eventID = $_POST['eventCode'];
+$eventCode = $_POST['eventCode'];
 
-$query = "SELECT * FROM events WHERE id='35'";
+//$query = "SELECT * FROM users";
+$query = "SELECT * FROM events WHERE eventCode='$eventCode'";
+//$query = "SELECT * FROM events INNER JOIN joinevents ON events.id=joinevents.eventID WHERE userID='$username'";
 //$query = "SELECT * FROM events WHERE eventCode="VAR"'";
 
-$result = $conn->query($query);
 if ($result) {
     $events = $result->fetchAll();
-    echo json_encode($events);
-} else {
+  if(!empty($events)){
+    echo json_encode(array(
+    "status"=>true,
+    "id"=>$events[0]["id"]
+    ));
+  } else {
+    echo json_encode($users);
+}} else {
     echo json_encode(false);
 }
 ?>
