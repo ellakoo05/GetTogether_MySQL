@@ -24,7 +24,17 @@ $result = $conn->query($query);
 
 if ($result) {
     $events = $result->fetchAll();
-    echo json_encode($events);
+    if (!empty($events)) {
+        echo json_encode(array(
+            "status" => true,
+            "id" => $events[0]["id"],
+            "eventname" => $eventname,
+            "eventdate" => $eventdate,
+            "eventlocation" => $eventlocation
+        ));
+    } else {
+        echo json_encode($events);
+    }
 } else {
     echo json_encode(false);
 }
