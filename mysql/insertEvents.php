@@ -19,7 +19,7 @@ $eventenddate = $_POST['eventenddate'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-$query = "INSERT INTO books (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate, eventCode) VALUES ('$eventname','$eventdate','$eventtime','$eventlocation','$eventend','$eventenddate','$eventCode')";
+$query = "INSERT INTO events (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate, eventCode) VALUES ('$eventname','$eventdate','$eventtime','$eventlocation','$eventend','$eventenddate','$eventCode')";
 
 $result = $conn->query($query);
 if ($result) {
