@@ -17,6 +17,8 @@ $password = $_POST['password'];
 //$query = "SELECT * FROM users";
 $query = "SELECT * FROM users WHERE username='$username' AND email='$email'";
 
+$result = $conn->query($query);
+
 if ($result) {
     $users = $result->fetchAll();
     if (!empty($users)) {
