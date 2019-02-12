@@ -17,8 +17,9 @@ $eventtime     = $_POST['eventtime'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM events WHERE eventname='$eventname'";
+$query = "SELECT * FROM events WHERE eventCode='$eventCode'";
 
+$result = $conn->query($query);
 if ($result) {
     $events = $result->fetchAll();
   if(!empty($events)){
