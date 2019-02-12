@@ -26,8 +26,8 @@ if ($result) {
         echo json_encode(array(
             "status" => true,
             "id" => $users[0]["id"],
-            "username" => $username,
-            "email" => $email,
+            "username" => $users[0]["username"],
+            "email" => $users[0]["email"],
             "pass" => $password
         ));
     } else {
