@@ -27,7 +27,7 @@ if ($result) {
     "id"=>$events[0]["id"]
     ));
   } else {
-    echo json_encode($users);
+    echo json_encode($events);
 }} else {
     echo json_encode(false);
 }
