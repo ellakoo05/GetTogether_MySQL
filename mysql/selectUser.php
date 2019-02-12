@@ -15,7 +15,7 @@ $email    = $_POST['email'];
 $password = $_POST['password'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM users WHERE username='$username' AND email='$email'";
+$query = "SELECT * FROM users WHERE username='$username'";
 
 $result = $conn->query($query);
 
@@ -26,9 +26,8 @@ if ($result) {
         echo json_encode(array(
             "status" => true,
             "id" => $users[0]["id"],
-            "username" => $users[0]["username"],
-            "email" => $users[0]["email"],
-            "pass" => $password
+            "username" => $username
+            "email" => $email
         ));
     } else {
         echo json_encode(false);
