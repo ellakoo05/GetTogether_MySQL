@@ -24,11 +24,15 @@ if ($result) {
   if(!empty($events)){
     echo json_encode(array(
     "status"=>true,
-    "id"=>$events[0]["id"]
+    "id" =>$events[0]["id"],
+    "eventname"=>$eventname,
+    "eventCode"=>$eventCode,
+    "eventlocation"=>$eventlocation
     ));
   } else {
     echo json_encode($events);
-}} else {
+}
+} else {
     echo json_encode(false);
 }
 ?>
