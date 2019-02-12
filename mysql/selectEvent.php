@@ -17,17 +17,13 @@ $eventtime     = $_POST['eventtime'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM events WHERE eventCode='$eventCode'";
+$query = "SELECT * FROM events WHERE eventname='$eventname'";
 
 if ($result) {
     $events = $result->fetchAll();
   if(!empty($events)){
     echo json_encode(array(
-    "status"=>true,
-    "id" =>$events[0]["id"],
-    "eventname"=>$eventname,
-    "eventCode"=>$eventCode,
-    "eventlocation"=>$eventlocation
+    "status"=>true
     ));
   } else {
     echo json_encode($events);
