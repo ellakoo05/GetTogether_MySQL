@@ -24,7 +24,11 @@ if ($result) {
     $events = $result->fetchAll();
   if(!empty($events)){
     echo json_encode(array(
-    "status"=>true
+    "status"=>true,
+      "id" => $events[0]["id"],
+      "eventname" => $eventname,
+      "eventlocation" => $eventlocation,
+      "eventdate" => $eventdate
     ));
   } else {
     echo json_encode($events);
