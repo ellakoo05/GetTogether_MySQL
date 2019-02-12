@@ -3,30 +3,29 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST");
 header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 
-$hostname = "tk3mehkfmmrhjg0b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-$username = "sbib1pmzgwmexs5g";
-$password = "tk4m14h6yyt889va";
-$dbname   = "fvtmkfyz8ymzy8a1";
-$port     = "3306";
-// Check connection
-$conn     = mysqli_connect($hostname, $username, $password, $dbname, $port);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-} else {
-    $sql = "INSERT INTO events (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate) VALUES ('{$_POST['eventname']}','{$_POST['eventdate']}','{$_POST['eventtime']}','{$_POST['eventlocation']}','{$_POST['eventend']}','{$_POST['eventenddate']}','{$_POST['eventCode']}')";
+try {
+    $conn = new PDO("mysql:host=tk3mehkfmmrhjg0b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com;dbname=fvtmkfyz8ymzy8a1", "sbib1pmzgwmexs5g", "tk4m14h6yyt889va");
+}
+catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
 }
 
-$res2 = mysqli_query($conn, $sql);
-//echo $res2;
-//if($res2 === TRUE){
-//echo "New record created successfully"; 
-//}
-//else{
-//echo "Insert failed"; 
-//};
-//
-header("Location:http://localhost:8080/eventpage");
-exit;
+$eventname     = $_POST['eventname'];
+$eventdate     = $_POST['eventdate'];
+$eventtime = $_POST['eventtime'];
+$eventlocation = $_POST['eventlocation'];
+$eventend = $_POST['eventend'];
+$eventenddate = $_POST['eventenddate'];
+$eventCode = $_POST['eventCode'];
 
+//$query = "SELECT * FROM users";
+$query = "INSERT INTO books (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate, eventCode) VALUES ('$eventname','$eventdate','$eventtime','$eventlocation','$eventend','$eventenddate','$eventCode')";
+
+$result = $conn->query($query);
+if ($result) {
+    $events = $result->fetchAll();
+    echo json_encode($events);
+} else {
+    echo json_encode(false);
+}
 ?>
