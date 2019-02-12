@@ -18,8 +18,6 @@ $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
 $query = "SELECT * FROM events WHERE eventCode='$eventCode'";
-//$query = "SELECT * FROM events INNER JOIN joinevents ON events.id=joinevents.eventID WHERE userID='$username'";
-//$query = "SELECT * FROM events WHERE eventCode="VAR"'";
 
 if ($result) {
     $events = $result->fetchAll();

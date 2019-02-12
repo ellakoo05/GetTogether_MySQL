@@ -21,17 +21,18 @@ $result = $conn->query($query);
 
 if ($result) {
     $users = $result->fetchAll();
-  if(!empty($users)){
-    echo json_encode(array(
-    "status"=>true,
-    "id"=>$users[0]["id"],
-    "email"=>$email,
-    "password"=>$password,
-    "username"=>$username
-    ));
-  } else {
-    echo json_encode($users);
-}} else {
+    if (!empty($users)) {
+        echo json_encode(array(
+            "status" => true,
+            "id" => $users[0]["id"],
+            "email" => $email,
+            "password" => $password,
+            "username" => $username
+        ));
+    } else {
+        echo json_encode($users);
+    }
+} else {
     echo json_encode(false);
 }
 ?>
