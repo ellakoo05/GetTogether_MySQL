@@ -31,7 +31,7 @@ if ($result) {
     ));
   } else {
     echo json_encode($users);
-} else {
+}} else {
     echo json_encode(false);
 }
 ?>
