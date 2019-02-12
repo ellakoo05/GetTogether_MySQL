@@ -17,23 +17,14 @@ $eventtime     = $_POST['eventtime'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-//$query = "SELECT * FROM events WHERE eventCode='$eventCode'";
-$query = "SELECT * FROM events WHERE eventCode='28834'";
+$query = "SELECT * FROM events WHERE eventCode='$eventCode'";
+//$query = "SELECT * FROM events WHERE eventCode='28834'";
 
 $result = $conn->query($query);
 
 if ($result) {
     $events = $result->fetchAll();
-    if (!empty($events)) {
-        echo json_encode(array(
-            "status" => true,
-            "id" => $events[0]["id"],
-            "eventname" => $eventname,
-            "eventlocation" => $eventlocation,
-        ));
-    } else {
-        echo json_encode($events);
-    }
+    echo json_encode($events);
 } else {
     echo json_encode(false);
 }
