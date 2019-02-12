@@ -14,7 +14,7 @@ $conn     = mysqli_connect($hostname, $username, $password, $dbname, $port);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
-    $sql = "INSERT INTO events (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate) VALUES ('{$_POST['eventname']}','{$_POST['eventdate']}','{$_POST['eventtime']}','{$_POST['eventlocation']}','{$_POST['eventend']}','{$_POST['eventenddate']}')";
+    $sql = "INSERT INTO events (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate) VALUES ('{$_POST['eventname']}','{$_POST['eventdate']}','{$_POST['eventtime']}','{$_POST['eventlocation']}','{$_POST['eventend']}','{$_POST['eventenddate']}','{$_POST['eventCode']}')";
 }
 
 $res2 = mysqli_query($conn, $sql);
