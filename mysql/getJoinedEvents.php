@@ -15,7 +15,7 @@ $email    = $_POST['email'];
 $password = $_POST['password'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM events INNER JOIN joinevents ON events.id=joinevents.eventID WHERE userID='$username'";
+$query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$username'";
 
 $result = $conn->query($query);
 
