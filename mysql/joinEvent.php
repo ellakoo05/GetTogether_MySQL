@@ -9,9 +9,12 @@ try {
 catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+$eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-$checkEventQuery = "SELECT * FROM events WHERE eventCode = '{$_POST['eventCode']}'";
+$checkEventQuery = "SELECT * FROM events WHERE eventCode = '$eventCode'";
+
+echo $eventCode;
 
 $result = $conn->query($checkEventQuery);
 if ($result) {
