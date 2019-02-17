@@ -18,7 +18,7 @@ $checkEventQuery = "SELECT * FROM events WHERE eventCode = '$eventCode'";
 $result = $conn->query($checkEventQuery);
 if ($result) {
     $event = $result->fetchAll();
-  error_log($event);
+  error_log(print_r($event, TRUE));
     $query = "INSERT INTO joinevents (userID, eventCode) VALUES ('{$_POST['userID']}','{$_POST['eventCode']}')";
 $result = $conn->query($query);
 if ($result) {
