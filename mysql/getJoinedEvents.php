@@ -21,6 +21,7 @@ $result = $conn->query($query);
 
 if ($result) {
     $joinedEvents = $result->fetchAll();
+    error_log(empty($joinedEvents));
   if(!empty($joinedEvents)){ 
     error_log($joinedEvents[0]);
     echo json_encode(array(
@@ -31,7 +32,7 @@ if ($result) {
     "eventlocation"=>$joinedEvents[0]["eventlocation"]
     ));
   } else {
-    echo json_encode($users);
+    echo json_encode($joinedEvents);
 }} else {
     echo json_encode(false);
 }
