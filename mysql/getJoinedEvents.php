@@ -21,18 +21,26 @@ $result = $conn->query($query);
 
 if ($result) {
     $joinedEvents = $result->fetchAll();
-    error_log($userID);
-    error_log(empty($joinedEvents));
-  error_log(implode($joinedEvents));
   if(!empty($joinedEvents)){ 
-    error_log($joinedEvents[0]["eventname"]);
-    echo json_encode(array(
-    "status"=>true,
-    "id"=>$joinedEvents[0]["id"],
-    "eventname"=>$joinedEvents[0]["eventname"],
-    "eventdate"=>$joinedEvents[0]["eventdate"],
-    "eventlocation"=>$joinedEvents[0]["eventlocation"]
+    $joinedEventsArray = array();
+    for ($i=0;$1<sizeof($joinedEvents);$i++) {
+      array_push($joinedEventsArray, array(
+    "id"=>$joinedEvents[$i]["id"],
+    "eventname"=>$joinedEvents[$i]["eventname"],
+    "eventdate"=>$joinedEvents[$i]["eventdate"],
+    "eventlocation"=>$joinedEvents[$i]["eventlocation"]
     ));
+      
+    }
+    echo json_encode($joinedEventsArray);
+    
+//    echo json_encode(array(
+//    "status"=>true,
+//    "id"=>$joinedEvents[0]["id"],
+//    "eventname"=>$joinedEvents[0]["eventname"],
+//    "eventdate"=>$joinedEvents[0]["eventdate"],
+//    "eventlocation"=>$joinedEvents[0]["eventlocation"]
+//    ));
   } else {
     echo json_encode($joinedEvents);
 }} else {
