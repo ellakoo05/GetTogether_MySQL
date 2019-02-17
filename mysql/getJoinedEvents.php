@@ -22,6 +22,7 @@ $result = $conn->query($query);
 if ($result) {
     $joinedEvents = $result->fetchAll();
   if(!empty($joinedEvents)){ 
+    error_log($joinedEvents[0]);
     echo json_encode(array(
     "status"=>true,
     "id"=>$joinedEvents[0]["id"],
