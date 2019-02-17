@@ -23,7 +23,7 @@ if ($result) {
     $joinedEvents = $result->fetchAll();
   if(!empty($joinedEvents)){ 
     $joinedEventsArray = array();
-    for ($i=0;$1<sizeof($joinedEvents);$i++) {
+    for ($i=0;$i<sizeof($joinedEvents);$i++) {
       array_push($joinedEventsArray, array(
     "id"=>$joinedEvents[$i]["id"],
     "eventname"=>$joinedEvents[$i]["eventname"],
