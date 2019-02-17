@@ -10,17 +10,18 @@ catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-$username = $_POST['username'];
+$userID = $_POST['userID'];
 $email    = $_POST['email'];
 $password = $_POST['password'];
 
 //$query = "SELECT * FROM users";
-$query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$username'";
+$query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$userID'";
 
 $result = $conn->query($query);
 
 if ($result) {
     $joinedEvents = $result->fetchAll();
+  error_log($userID);
     error_log(empty($joinedEvents));
   if(!empty($joinedEvents)){ 
     error_log($joinedEvents[0]);
