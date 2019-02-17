@@ -23,8 +23,9 @@ if ($result) {
     $joinedEvents = $result->fetchAll();
     error_log($userID);
     error_log(empty($joinedEvents));
+  error_log(implode($joinedEvents));
   if(!empty($joinedEvents)){ 
-    error_log($joinedEvents[0]);
+    error_log($joinedEvents[0]["eventname"]);
     echo json_encode(array(
     "status"=>true,
     "id"=>$joinedEvents[0]["id"],
