@@ -18,17 +18,15 @@ $checkEventQuery = "SELECT * FROM events WHERE eventCode = '$eventCode'";
 $result = $conn->query($checkEventQuery);
 if ($result) {
     $event = $result->fetchAll();
-//  error_log(print_r($event[0], TRUE));
-  error_log($event[0]);
-  error_log(empty($event));
-  
-    $query = "INSERT INTO joinevents (userID, eventCode) VALUES ('{$_POST['userID']}','{$_POST['eventCode']}')";
-$result = $conn->query($query);
-if ($result) {
-    echo json_encode(true);
-} else {
-    echo json_encode(false);
-}
+    if(!empty($event)) {
+      $query = "INSERT INTO joinevents (userID, eventCode) VALUES ('{$_POST['userID']}','{$_POST['eventCode']}')";
+      $result = $conn->query($query);
+      if ($result) {
+        echo json_encode(true);
+      } else {
+        echo json_encode(false);
+      }
+    }
 } else {
     echo json_encode(false);
 }
