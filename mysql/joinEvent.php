@@ -9,22 +9,26 @@ try {
 catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
 $checkEventQuery = "SELECT * FROM events WHERE eventCode = '$eventCode'";
 
-echo $eventCode;
-
 $result = $conn->query($checkEventQuery);
 if ($result) {
     $event = $result->fetchAll();
-    echo json_encode($event);
+  
+    $query = "INSERT INTO joinevents (userID, eventCode) VALUES ('{$_POST['userID']}','{$_POST['eventCode']}')";
+$result = $conn->query($query);
+if ($result) {
+    echo json_encode(true);
 } else {
     echo json_encode(false);
 }
-
-$query = "INSERT INTO joinevents (userID, eventCode) VALUES ('{$_POST['userID']}','{$_POST['eventCode']}')";
+} else {
+    echo json_encode(false);
+}
 
 //$result = $conn->query($query);
 //if ($result) {
