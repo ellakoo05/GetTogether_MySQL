@@ -11,13 +11,23 @@ catch (PDOException $e) {
 }
 
 //$query = "SELECT * FROM users";
-$query = "INSERT INTO joinevents (userID, eventID) VALUES ('{$_POST['userID']}','{$_POST['eventID']}')";
+$checkEventQuery = "SELECT * FROM events WHERE eventCode = '{$_POST['eventCode']}'";
 
-$result = $conn->query($query);
+$result = $conn->query($checkEventQuery);
 if ($result) {
-    $users = $result->fetchAll();
-    echo json_encode($users);
+    $event = $result->fetchAll();
+    echo json_encode($event);
 } else {
     echo json_encode(false);
 }
+
+$query = "INSERT INTO joinevents (userID, eventCode) VALUES ('{$_POST['userID']}','{$_POST['eventCode']}')";
+
+//$result = $conn->query($query);
+//if ($result) {
+//    $users = $result->fetchAll();
+//    echo json_encode($users);
+//} else {
+//    echo json_encode(false);
+//}
 ?>
