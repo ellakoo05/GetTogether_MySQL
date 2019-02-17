@@ -20,14 +20,14 @@ $query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joineve
 $result = $conn->query($query);
 
 if ($result) {
-    $users = $result->fetchAll();
-  if(!empty($users)){ 
+    $joinedEvents = $result->fetchAll();
+  if(!empty($joinedEvents)){ 
     echo json_encode(array(
     "status"=>true,
-    "id"=>$users[0]["id"],
-    "email"=>$email,
-    "password"=>$password,
-    "username"=>$username
+    "id"=>$joinedEvents[0]["id"],
+    "eventname"=>$joinedEvents[0]["eventname"],
+    "eventdate"=>$joinedEvents[0]["eventdate"],
+    "eventlocation"=>$joinedEvents[0]["eventlocation"]
     ));
   } else {
     echo json_encode($users);
