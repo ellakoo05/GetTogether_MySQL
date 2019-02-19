@@ -13,9 +13,12 @@ catch (PDOException $e) {
 $userID = $_POST['userID'];
 $email    = $_POST['email'];
 $password = $_POST['password'];
+//$eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
 $query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$userID'";
+//$query = "SELECT * FROM events INNER JOIN tasks ON events.eventCode=tasks.eventCode WHERE eventCode='$eventCode'";
+
 error_log($query);
 $result = $conn->query($query);
 
@@ -33,14 +36,6 @@ if ($result) {
       
     }
     echo json_encode($joinedEventsArray);
-    
-//    echo json_encode(array(
-//    "status"=>true,
-//    "id"=>$joinedEvents[0]["id"],
-//    "eventname"=>$joinedEvents[0]["eventname"],
-//    "eventdate"=>$joinedEvents[0]["eventdate"],
-//    "eventlocation"=>$joinedEvents[0]["eventlocation"]
-//    ));
   } else {
     echo json_encode($joinedEvents);
 }} else {
