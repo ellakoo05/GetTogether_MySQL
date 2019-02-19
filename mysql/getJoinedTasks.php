@@ -10,10 +10,7 @@ catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-$userID = $_POST['userID'];
-$email    = $_POST['email'];
-$password = $_POST['password'];
-//$eventCode = $_POST['eventCode'];
+$eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
 //$query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$userID'";
