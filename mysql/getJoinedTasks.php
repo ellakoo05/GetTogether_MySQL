@@ -10,17 +10,22 @@ catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-$tasks     = $_POST['tasks'];
 $eventCode = $_POST['eventCode'];
 
-//$query = "SELECT * FROM users";
-$query = "INSERT INTO tasks (eventCode, tasks) VALUES ('$eventCode', '$tasks')";
+//////$query = "SELECT * FROM users";
+//$query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$userID'";
+$query = "SELECT * FROM events INNER JOIN tasks ON events.eventCode=tasks.eventCode WHERE eventCode='$eventCode'";
 
+error_log($query);
 $result = $conn->query($query);
+
 if ($result) {
-    $tasks = $result->fetchAll();
-  error_log($tasks);
-    echo json_encode($tasks);
+    $joinedEventsTasks = $result->fetchAll();
+    if (!empty($joinedEventsTasks)) {
+        echo json_encode($joinedEventsTasks);
+    } else {
+        echo json_encode(false);
+    }
 } else {
     echo json_encode(false);
 }

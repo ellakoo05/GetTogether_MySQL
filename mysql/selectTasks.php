@@ -14,13 +14,18 @@ $tasks     = $_POST['tasks'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-$query = "INSERT INTO tasks (eventCode, tasks) VALUES ('$eventCode', '$tasks')";
+$query = "SELECT * FROM tasks WHERE eventCode='$eventCode'";
+//$query = "SELECT * FROM events WHERE eventCode='28834'";
 
 $result = $conn->query($query);
+
 if ($result) {
     $tasks = $result->fetchAll();
-  error_log($tasks);
-    echo json_encode($tasks);
+    if (!empty($tasks)) {
+        echo json_encode($tasks);
+    } else {
+        echo json_encode(false);
+    }
 } else {
     echo json_encode(false);
 }
