@@ -10,23 +10,33 @@ catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-$eventCode = $_POST['eventCode'];
+$userID = $_POST['userID'];
+$email    = $_POST['email'];
+$password = $_POST['password'];
+//$eventCode = $_POST['eventCode'];
 
-//////$query = "SELECT * FROM users";
+//$query = "SELECT * FROM users";
 //$query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$userID'";
-$query = "SELECT * FROM events INNER JOIN tasks ON events.eventCode=tasks.eventCode WHERE eventCode='$eventCode'";
+$query = "SELECT * FROM events INNER JOIN tasks ON events.eventCode=tasks.eventCode WHERE events.eventCode='$eventCode'";
 
 error_log($query);
 $result = $conn->query($query);
 
 if ($result) {
-    $joinedEventsTasks = $result->fetchAll();
-    if (!empty($joinedEventsTasks)) {
-        echo json_encode($joinedEventsTasks);
-    } else {
-        echo json_encode(false);
+    $eventTasks = $result->fetchAll();
+  if(!empty($joinedEvents)){ 
+    $eventTasksArray = array();
+    for ($i=0;$i<sizeof($eventTasks);$i++) {
+      array_push($eventTasksArray, array(
+    "id"=>$eventTasks[$i]["id"],
+    "tasks"=>$eventTasks[$i]["tasks"],
+    ));
+      
     }
-} else {
+    echo json_encode($joinedEventsArray);
+  } else {
+    echo json_encode($joinedEvents);
+}} else {
     echo json_encode(false);
 }
 ?>
