@@ -12,8 +12,6 @@ catch (PDOException $e) {
 
 $eventCode = $_POST['eventCode'];
 
-//$query = "SELECT * FROM users";
-//$query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$userID'";
 $query = "SELECT * FROM events INNER JOIN tasks ON events.eventCode=tasks.eventCode WHERE events.eventCode='$eventCode'";
 
 error_log($query);
@@ -21,7 +19,7 @@ $result = $conn->query($query);
 
 if ($result) {
     $eventTasks = $result->fetchAll();
-  if(!empty($joinedEvents)){ 
+  if(!empty($eventTasks)){ 
     $eventTasksArray = array();
     for ($i=0;$i<sizeof($eventTasks);$i++) {
       array_push($eventTasksArray, array(
@@ -30,9 +28,9 @@ if ($result) {
     ));
       
     }
-    echo json_encode($joinedEventsArray);
+    echo json_encode($eventTasksArray);
   } else {
-    echo json_encode($joinedEvents);
+    echo json_encode($eventTasks);
 }} else {
     echo json_encode(false);
 }
