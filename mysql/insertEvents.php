@@ -17,9 +17,10 @@ $eventlocation = $_POST['eventlocation'];
 $eventend = $_POST['eventend'];
 $eventenddate = $_POST['eventenddate'];
 $eventCode = $_POST['eventCode'];
+$userID = $_POST['userID'];
 
 //$query = "SELECT * FROM users";
-$query = "INSERT INTO events (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate, eventCode) VALUES ('$eventname','$eventdate','$eventtime','$eventlocation','$eventend','$eventenddate','$eventCode')";
+$query = "INSERT INTO events (eventname, eventdate, eventtime, eventlocation, eventend, eventenddate, eventCode, admin) VALUES ('$eventname','$eventdate','$eventtime','$eventlocation','$eventend','$eventenddate','$eventCode', '$userID')";
 
 $result = $conn->query($query);
 if ($result) {
