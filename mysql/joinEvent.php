@@ -11,31 +11,30 @@ catch (PDOException $e) {
 }
 
 $eventCode = $_POST['eventCode'];
+$userID = $_POST['userID'];
 
-//$query = "SELECT * FROM users";
 $checkEventQuery = "SELECT * FROM events WHERE eventCode = '$eventCode'";
+$checkJoined = "SELECT * FROM joinevents WHERE userID = '$userID' AND eventCode = '$eventCode'";
+$query = "INSERT INTO joinevents (userID, eventCode) VALUES ('$userID','$eventCode')";
 
 $result = $conn->query($checkEventQuery);
 if ($result) {
     $event = $result->fetchAll();
     if(!empty($event)) {
-      $query = "INSERT INTO joinevents (userID, eventCode) VALUES ('{$_POST['userID']}','{$_POST['eventCode']}')";
-      $result = $conn->query($query);
-      if ($result) {
-        echo json_encode(true);
-      } else {
-        echo json_encode(false);
-      }
+      $joinedResult = $conn->query($checkJoined);
+        if ($joinedResult) {
+          $joined = $joinedResult->fetchAll();
+          if(!empty($joined)) {
+            $result = $conn->query($query);
+            if ($result) {
+              echo json_encode(true);
+            } else {
+              echo json_encode(false);
+            }
+          }
+        }
     }
 } else {
-    echo json_encode(false);
+  echo json_encode(false);
 }
-
-//$result = $conn->query($query);
-//if ($result) {
-//    $users = $result->fetchAll();
-//    echo json_encode($users);
-//} else {
-//    echo json_encode(false);
-//}
 ?>
