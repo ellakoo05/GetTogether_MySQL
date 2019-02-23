@@ -25,16 +25,13 @@ if ($result) {
         if ($joinedResult) {
           $joined = $joinedResult->fetchAll();
           if(empty($joined)) {
-            $result = $conn->query($query);
-            if ($result) {
+            $insertResult = $conn->query($query);
+            if ($insertResult) {
               echo json_encode(true);
-            } else {
-              echo json_encode(false);
             }
           }
         }
     }
-} else {
-  echo json_encode(false);
-}
+} 
+echo json_encode(false);
 ?>
