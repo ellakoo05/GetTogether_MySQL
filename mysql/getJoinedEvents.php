@@ -13,7 +13,7 @@ catch (PDOException $e) {
 $userID = $_POST['userID'];
 $email    = $_POST['email'];
 $password = $_POST['password'];
-//$eventCode = $_POST['eventCode'];
+$eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
 $query = "SELECT * FROM events INNER JOIN joinevents ON events.eventCode=joinevents.eventCode WHERE userID='$userID'";
@@ -32,7 +32,7 @@ if ($result) {
     "eventname"=>$joinedEvents[$i]["eventname"],
     "eventdate"=>$joinedEvents[$i]["eventdate"],
     "eventlocation"=>$joinedEvents[$i]["eventlocation"],
-    "eventCode"=>$joinedEvents[$]["eventCode"]
+    "eventCode"=>$joinedEvents[$i]["eventCode"]
     ));
       
     }
