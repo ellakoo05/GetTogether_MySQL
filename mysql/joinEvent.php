@@ -16,6 +16,7 @@ $userID = $_POST['userID'];
 $checkEventQuery = "SELECT * FROM events WHERE eventCode = '$eventCode'";
 $checkJoined = "SELECT * FROM joinevents WHERE userID = '$userID' AND eventCode = '$eventCode'";
 $query = "INSERT INTO joinevents (userID, eventCode) VALUES ('$userID','$eventCode')";
+$isSuccessful = false;
 
 $result = $conn->query($checkEventQuery);
 if ($result) {
@@ -27,11 +28,15 @@ if ($result) {
           if(empty($joined)) {
             $insertResult = $conn->query($query);
             if ($insertResult) {
+              $isSuccessful = true;
               echo json_encode(true);
             }
           }
         }
     }
 } 
-echo json_encode(false);
+if (!$isSuccessful) {
+  echo json_encode(false);
+
+}
 ?>
