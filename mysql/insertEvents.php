@@ -25,9 +25,11 @@ $query = "INSERT INTO events (eventname, eventdate, eventtime, eventlocation, ev
 $result = $conn->query($query);
 if ($result) {
     $events = $result->fetchAll();
+  error_log("insert success");  
   error_log($events);
     echo json_encode($events);
 } else {
+  error_log("insert FAILED");
     echo json_encode(false);
 }
 ?>
