@@ -24,7 +24,7 @@ if ($result) {
       $joinedResult = $conn->query($checkJoined);
         if ($joinedResult) {
           $joined = $joinedResult->fetchAll();
-          if(!empty($joined)) {
+          if(empty($joined)) {
             $result = $conn->query($query);
             if ($result) {
               echo json_encode(true);
