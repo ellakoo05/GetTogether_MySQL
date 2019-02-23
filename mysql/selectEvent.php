@@ -10,10 +10,6 @@ catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-$eventname     = $_POST['eventname'];
-$eventdate     = $_POST['eventdate'];
-$eventlocation = $_POST['eventlocation'];
-$eventtime     = $_POST['eventtime'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";

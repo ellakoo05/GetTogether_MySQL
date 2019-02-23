@@ -26,7 +26,6 @@ $result = $conn->query($query);
 if ($result) {
     $events = $result->fetchAll();
   error_log("insert success");  
-  error_log($events);
     echo json_encode($events);
 } else {
   error_log("insert FAILED");

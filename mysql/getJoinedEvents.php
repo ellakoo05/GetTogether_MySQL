@@ -31,7 +31,8 @@ if ($result) {
     "id"=>$joinedEvents[$i]["id"],
     "eventname"=>$joinedEvents[$i]["eventname"],
     "eventdate"=>$joinedEvents[$i]["eventdate"],
-    "eventlocation"=>$joinedEvents[$i]["eventlocation"]
+    "eventlocation"=>$joinedEvents[$i]["eventlocation"],
+    "eventCode"=>$joinedEvents[$]["eventCode"]
     ));
       
     }
