@@ -14,12 +14,13 @@ $tasks     = $_POST['tasks'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-$query = "INSERT INTO tasks (eventCode, tasks) VALUES ('$eventCode', '$tasks') SELECT LAST_INSERT_ID()";
+$query = "INSERT INTO tasks (eventCode, tasks) VALUES ('$eventCode', '$tasks')";
 
 $result = $conn->query($query);
 if ($result) {
     $tasks = $result->fetchAll();
-  error_log($tasks);
+  $last_id=$conn->insert_id;
+  error_log($last_id);
     echo json_encode($tasks);
 } else {
     echo json_encode(false);
