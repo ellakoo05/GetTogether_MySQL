@@ -9,7 +9,7 @@ catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-$id = $_POST['taskID'];
+$id = $_POST['id'];
 
 $query = "DELETE FROM tasks WHERE id='$id'";
 
