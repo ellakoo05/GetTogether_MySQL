@@ -8,15 +8,20 @@ try {
 catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-$userID     = $_GET['userID'];
-$eventCode     = $_GET['eventCode'];
-$tasks       = $_GET['tasks'];
 
-$query = "DELETE FROM tasks WHERE (userID, eventCode, tasks) VALUES ('{$_GET['userID']}','{$_GET['eventCode']}','{$_GET['tasks']}')";
+$id = $_POST['id'];
+
+$query = "DELETE FROM tasks WHERE id='$id'";
+
 $result = $conn->query($query);
+
 if ($result) {
-    $users = $result->fetchAll();
-    echo json_encode($users);
+    $tasks = $result->fetchAll();
+    if (!empty($tasks)) {
+        echo json_encode($tasks);
+    } else {
+        echo json_encode(false);
+    }
 } else {
     echo json_encode(false);
 }
