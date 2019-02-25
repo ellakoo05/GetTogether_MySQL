@@ -14,7 +14,7 @@ $tasks     = $_POST['tasks'];
 $eventCode = $_POST['eventCode'];
 
 //$query = "SELECT * FROM users";
-$query = "INSERT INTO tasks (eventCode, tasks) VALUES ('$eventCode', '$tasks')";
+$query = "INSERT INTO tasks (eventCode, tasks) VALUES ('$eventCode', '$tasks') SELECT LAST_INSERT_ID()";
 
 $result = $conn->query($query);
 if ($result) {
