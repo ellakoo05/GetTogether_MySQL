@@ -18,9 +18,9 @@ $query = "INSERT INTO tasks (eventCode, tasks) VALUES ('$eventCode', '$tasks')";
 
 $result = $conn->query($query);
 if ($result) {
-    $tasks = $result->fetchAll();
-  $conn->insert_id;
+//    $tasks = $result->fetchAll();
   $last_id=$conn->insert_id;
+  error_log($last_id);
     echo json_encode($last_id);
 } else {
     echo json_encode(false);
