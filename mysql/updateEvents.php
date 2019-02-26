@@ -14,8 +14,9 @@ $eventlocation       = $_POST['eventlocation'];
 $eventenddate = $_POST['eventenddate'];
 $eventtime = $_POST['eventtime'];
 $eventend = $_POST['eventend'];
+$eventCode = $_POST['eventCode'];
 
-$query = "UPDATE events SET (eventname, eventdate, eventlocation, eventnote, eventenddate, eventtime, eventend, eventCode) VALUES ('$eventname','$eventdate','$eventlocation', '$eventenddate', '$eventtime', '$eventend')";
+$query = "UPDATE events SET (eventname, eventdate, eventlocation, eventnote, eventenddate, eventtime, eventend, eventCode) VALUES ('$eventname','$eventdate','$eventlocation', '$eventenddate', '$eventtime', '$eventend') WHERE eventCode='$eventCode'";
 
 $result = $conn->query($query);
 if ($result) {
