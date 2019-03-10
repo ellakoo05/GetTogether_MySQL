@@ -20,6 +20,7 @@ $result = $conn->query($query);
 if ($result) {
     $eventTasks = $result->fetchAll();
   if(!empty($eventTasks)){ 
+    error_log(eventTasks);
     $eventTasksArray = array();
     for ($i=0;$i<sizeof($eventTasks);$i++) {
       array_push($eventTasksArray, array(
