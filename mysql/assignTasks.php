@@ -13,7 +13,7 @@ catch (PDOException $e) {
 $taskID = $_POST['taskID'];
 $userID = $_POST['userID'];
 
-$checkAssigned = "SELECT * FROM joinevents WHERE userID = '$userID' AND taskID = '$taskID'";
+$checkAssigned = "SELECT * FROM assigned_tasks WHERE userID = '$userID' AND taskID = '$taskID'";
 $query = "INSERT INTO assigned_tasks (userID, taskID) VALUES ('$userID','$taskID')";
 $isSuccessful = false;
 
