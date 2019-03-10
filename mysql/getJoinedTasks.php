@@ -20,14 +20,14 @@ $result = $conn->query($query);
 if ($result) {
     $eventTasks = $result->fetchAll();
   if(!empty($eventTasks)){ 
-    error_log(eventTasks);
+    error_log($eventTasks);
     $eventTasksArray = array();
     for ($i=0;$i<sizeof($eventTasks);$i++) {
       array_push($eventTasksArray, array(
     "id"=>$eventTasks[$i]["id"],
     "tasks"=>$eventTasks[$i]["tasks"],
     ));
-      
+    error_log($eventTasksArray);
     }
     echo json_encode($eventTasksArray);
   } else {
