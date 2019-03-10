@@ -12,17 +12,25 @@ catch (PDOException $e) {
 $id = $_POST['taskID'];
 
 $query = "DELETE FROM tasks WHERE id='$id'";
+$query2 = "DELETE FROM assigned_tasks WHERE taskID='$id'";
 
 $result = $conn->query($query);
-
+$deleteResult = $conn->query($query2);
 if ($result) {
-    $tasks = $result->fetchAll();
-    if (!empty($tasks)) {
-        echo json_encode($tasks);
-    } else {
-        echo json_encode(false);
-    }
+    echo json_encode(true);
 } else {
     echo json_encode(false);
 }
 ?>
+<!-- $result = $conn->query($checkAssigned);
+if ($result) {
+    $assignedTasks = $result->fetchAll();
+    if(empty($assignedTasks)) {
+        $insertResult = $conn->query($query);
+        if ($insertResult) {
+            echo json_encode(true);
+        } else {
+            echo json_encode(false);
+        }
+    }
+} -->
