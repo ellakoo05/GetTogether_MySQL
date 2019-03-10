@@ -12,9 +12,10 @@ catch (PDOException $e) {
 
 $taskID = $_POST['taskID'];
 $userID = $_POST['userID'];
+$eventCode = $_POST['eventCode'];
 
 $checkAssigned = "SELECT * FROM assigned_tasks WHERE userID = '$userID' AND taskID = '$taskID'";
-$query = "INSERT INTO assigned_tasks (userID, taskID) VALUES ('$userID','$taskID')";
+$query = "INSERT INTO assigned_tasks (userID, taskID, eventCode) VALUES ('$userID','$taskID', '$eventCode')";
 $isSuccessful = false;
 
 $result = $conn->query($checkAssigned);
