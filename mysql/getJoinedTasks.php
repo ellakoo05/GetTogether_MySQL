@@ -12,7 +12,7 @@ catch (PDOException $e) {
 
 $eventCode = $_POST['eventCode'];
 
-$query = "SELECT * FROM events INNER JOIN tasks ON events.eventCode=tasks.eventCode WHERE events.eventCode='$eventCode'";
+$query = "SELECT * FROM events INNER JOIN tasks ON events.eventCode=tasks.eventCode INNER JOIN assigned_tasks ON tasks.id = assigned_tasks.taskID WHERE events.eventCode='$eventCode'";
 
 error_log($query);
 $result = $conn->query($query);
