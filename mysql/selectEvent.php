@@ -12,9 +12,8 @@ catch (PDOException $e) {
 
 $eventCode = $_POST['eventCode'];
 
-//$query = "SELECT * FROM users";
+
 $query = "SELECT * FROM events WHERE eventCode='$eventCode'";
-//$query = "SELECT * FROM events WHERE eventCode='28834'";
 
 $result = $conn->query($query);
 
